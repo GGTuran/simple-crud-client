@@ -8,6 +8,19 @@ const Update = () => {
         const name = form.name.value;
         const email = form.email.value;
         console.log(name, email);
+        const updatedUser = {name, email};
+
+        fetch(`http://localhost:5000/users/${loadedUSer._id}`,{
+            method:'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedUser)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+        })
     }
     return (
         <div>
